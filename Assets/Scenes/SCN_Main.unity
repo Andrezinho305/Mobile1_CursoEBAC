@@ -3134,7 +3134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 363553005}
   lerpSpeed: 2.5
-  speed: 2
+  speed: 10
   uiTextPowerUp: {fileID: 714670795}
   enemyTag: Enemy
   endTag: EndLine
@@ -3529,7 +3529,7 @@ GameObject:
   - component: {fileID: 1251400897}
   - component: {fileID: 1251400896}
   - component: {fileID: 1251400895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coin Collector
   m_TagString: CoinCollector
   m_Icon: {fileID: 0}

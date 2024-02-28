@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8105034651293626766}
   - component: {fileID: 8105034651293626767}
   - component: {fileID: 8105034651293626764}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PFB_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

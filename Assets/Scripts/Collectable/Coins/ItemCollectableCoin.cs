@@ -25,7 +25,7 @@ public class ItemCollectableCoin : CollectableBase
 
     protected override void Collect()
     {
-        base.OnCollect();
+        base.Collect();
     }
 
     private void Update()
