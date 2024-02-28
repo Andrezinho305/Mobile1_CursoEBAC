@@ -35,6 +35,9 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Coin Setup")]
     public GameObject coinCollector;
 
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
+
 
 
     #endregion
@@ -44,6 +47,7 @@ public class PlayerController : Singleton<PlayerController>
     private bool _canRun;
     private float _currentSpeed;
     private Vector3 _startPosition;
+    private float _baseAnimationSpeed = 10f;
 
     #endregion
 
@@ -76,7 +80,8 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == enemyTag)
         {
-            if (!invincible) EndGame();
+            MoveBack();
+            if (!invincible) EndGame(AnimatorManager.AnimationType.DEAD);//passa a animação de dead neste caso de colisão
         }
     }
 
@@ -88,15 +93,25 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    private void EndGame()
+    private void MoveBack() //move o personagem um pouco para tras para nao clippar na parede enemy
+    {
+        transform.DOMoveZ(-1f, 1f).SetRelative(); //-1 é relativo a posição atual dele
+        /*outro jeito:
+         * transform.position.z - 1f;
+         */
+    }
+
+    private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE) //para a variavel animationType (que só é um dos tipos presentes no animation manager, standard eh sempre IDLE, mas pode receber outras variaveis)
     {
         _canRun = false;
+        animatorManager.Play(animationType);
         endScreen.SetActive(true);
     }
 
     public void StartRunning()
     {
         _canRun = true;
+        animatorManager.Play(AnimatorManager.AnimationType.RUN, _currentSpeed/_baseAnimationSpeed); //leva para o animator manager e altera a velocidade da animação declarada
     }
 
     public void SetPowerUpText(string s)
