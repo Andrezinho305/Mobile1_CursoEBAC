@@ -6,9 +6,11 @@ public class PowerUpCoins : PowerUpBase
 {
     [Header("Coin Collector")]
     public float sizeAmount = 7;
+
     protected override void StartPowerUp()
     {
         base.StartPowerUp();
+        PlayerController.Instance.SetPowerUpText("Coin Mania");
         PlayerController.Instance.ChangeCoinCollectorSize(sizeAmount);
     }
 

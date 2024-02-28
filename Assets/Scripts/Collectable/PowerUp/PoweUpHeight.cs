@@ -13,6 +13,7 @@ public class PoweUpHeight : PowerUpBase
     protected override void StartPowerUp()
     {
         base.StartPowerUp();
+        PlayerController.Instance.SetPowerUpText("Flying");
         PlayerController.Instance.ChangeHeight(amountHeight, duration, animationDuration, ease); //quanto vai subir, por quanto tempo, duração da animação, tipo de animação
     }
 

@@ -80,8 +80,11 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == enemyTag)
         {
-            MoveBack();
-            if (!invincible) EndGame(AnimatorManager.AnimationType.DEAD);//passa a animação de dead neste caso de colisão
+            if (!invincible)
+            {
+                MoveBack();
+                EndGame(AnimatorManager.AnimationType.DEAD);//passa a animação de dead neste caso de colisão
+            }
         }
     }
 
