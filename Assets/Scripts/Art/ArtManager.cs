@@ -17,7 +17,7 @@ public class ArtManager : Singleton<ArtManager>
 
     public ArtSettup GetSetupByType(ArtType artType)
     {
-        return artSettup.Find(i => i.artType == artType);
+        return artSettup.Find(i => i.artType == artType); //O Find usa o método de parâmetro para achar um dado elemento e retorná-lo.
     }
 
 }

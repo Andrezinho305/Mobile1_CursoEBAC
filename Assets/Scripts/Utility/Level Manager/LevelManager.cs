@@ -18,10 +18,11 @@ public class LevelManager : MonoBehaviour
     private SOLevelRandomSettup _currSettup;
     public float timeBetweenPieces = 1f; //coroutine settup, delay between pieces spawning
 
-    private void Awake()
+    private void Start() //usar start para garantir que o level é gerado após o singleton dos managers
     {
         //SpawnNextLevel(); //para spawn de um nível completo
         CreateLevel();
+
     }
 
     #region Controlled Level Spawning
