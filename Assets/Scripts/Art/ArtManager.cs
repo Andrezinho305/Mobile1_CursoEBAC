@@ -22,10 +22,10 @@ public class ArtManager : Singleton<ArtManager>
 
 }
 
-[System.Serializable]
+[System.Serializable] //permite ser visto no UI da unity
 public class ArtSettup
 {
     public ArtManager.ArtType artType;
-    public GameObject gameObject;
+    public GameObject gameObject; //objeto que irá substituir o placeholder
 
 }

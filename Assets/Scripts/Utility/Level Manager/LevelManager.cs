@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class LevelManager : MonoBehaviour
     private GameObject _currentLevel;
 
     public List<SOLevelRandomSettup> levelRandomSettup;
+
+    [Header("Animation")]
+    public float scaleDuration = .2f;
+    public float scaleTimeBetweenPieces = .1f;
+    public Ease ease = Ease.OutBack;
+
+
 
     private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
     private SOLevelRandomSettup _currSettup;
@@ -81,6 +89,8 @@ public class LevelManager : MonoBehaviour
         }
 
         ColorManager.Instance.ChangeColourByType(_currSettup.artType);
+
+        StartCoroutine(ScalePiecesByType());
     }
 
     private void CreateLevelPieces(List<LevelPieceBase> list)
@@ -117,6 +127,26 @@ public class LevelManager : MonoBehaviour
 
         _spawnedPieces.Clear(); //limpa o array -> permite que o swapn seja no lugar certo e que a lista nao acabe sendo deletada e trave o jogo
     }
+
+
+    IEnumerator ScalePiecesByType()
+    {
+        foreach (var p in _spawnedPieces)
+        {
+            p.transform.localScale = Vector3.zero; //define o tamanho de todas as peças como 0 no começo
+        }
+
+        yield return null;
+
+        for (int i = 0; i <= _spawnedPieces.Count; i++)
+        {
+            _spawnedPieces[i].transform.DOScale(1, scaleDuration).SetEase(ease); //aumenta o tamanho das peças para 1 durante .2 segundos
+
+            yield return new WaitForSeconds(scaleTimeBetweenPieces);
+
+        }
+    }
+
 
     //versão corrotina
     /*private void CreateLevel()
