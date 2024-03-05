@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2716063954191640240}
   - component: {fileID: 3579128616904099561}
   - component: {fileID: 3904866592845422442}
+  - component: {fileID: -6387814594575785283}
   m_Layer: 0
   m_Name: ArtPiece_Cylinder
   m_TagString: Untagged
@@ -96,3 +97,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-6387814594575785283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242762263727185582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13085fa507897b042a6a4007f46d2965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  meshRenderer: {fileID: 3579128616904099561}
+  startColor: {r: 1, g: 1, b: 1, a: 1}

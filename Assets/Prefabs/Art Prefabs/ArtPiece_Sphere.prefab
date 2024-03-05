@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8003067333659344960}
   - component: {fileID: 4991606163466339437}
   - component: {fileID: 229182280491480692}
+  - component: {fileID: -3684207876402174801}
   m_Layer: 0
   m_Name: ArtPiece_Sphere
   m_TagString: Untagged
@@ -95,3 +96,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3684207876402174801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006363369645796753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13085fa507897b042a6a4007f46d2965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  meshRenderer: {fileID: 4991606163466339437}
+  startColor: {r: 1, g: 1, b: 1, a: 1}

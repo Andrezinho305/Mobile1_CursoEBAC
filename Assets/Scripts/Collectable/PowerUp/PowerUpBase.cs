@@ -8,6 +8,11 @@ public class PowerUpBase : CollectableBase
     public float duration;
 
 
+    private void Start()
+    {
+        PowerUpAnimatorManager.Instance.RegisterPowerUp(this);
+    }
+
     protected override void OnCollect() // override = sobreescreve a função orgiinal que está sendo herdada, adicionando comandos
     { 
         base.OnCollect(); 

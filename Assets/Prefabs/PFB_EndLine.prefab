@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2523001664442286838}
   - component: {fileID: 5456032255556791920}
   - component: {fileID: 7255469479670886302}
+  - component: {fileID: 868054194102104058}
   m_Layer: 0
   m_Name: Test Cube
   m_TagString: Untagged
@@ -95,6 +96,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &868054194102104058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2148564807921324896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13085fa507897b042a6a4007f46d2965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  meshRenderer: {fileID: 5456032255556791920}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8105034651293626765
 GameObject:
   m_ObjectHideFlags: 0

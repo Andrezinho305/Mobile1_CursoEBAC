@@ -129,6 +129,7 @@ public class LevelManager : MonoBehaviour
         _spawnedPieces.Clear(); //limpa o array -> permite que o swpan seja no lugar certo e que a lista nao acabe sendo deletada e trave o jogo
 
         CoinsAnimatorManager.Instance.CleanSpawnedCoins();
+        PowerUpAnimatorManager.Instance.CleanSpawnedPowerUps();
     }
 
 
@@ -151,6 +152,7 @@ public class LevelManager : MonoBehaviour
         }
 
         CoinsAnimatorManager.Instance.StartAnimations();
+        PowerUpAnimatorManager.Instance.StartAnimations();
 
     }
 

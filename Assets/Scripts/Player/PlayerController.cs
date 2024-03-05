@@ -37,6 +37,9 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Animation")]
     public AnimatorManager animatorManager;
+    public GameObject player;
+    public float scaleDuration = .2f;
+    public Ease ease = Ease.OutBack;
 
 
 
@@ -61,6 +64,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Start()
     {
         _startPosition = transform.position;
+        StartCoroutine(ScalePlayerByTime());
         ResetSpeed();
     }
 
@@ -187,6 +191,21 @@ public class PlayerController : Singleton<PlayerController>
     {
         coinCollector.transform.localScale = Vector3.one * amount;
     }
+
+    #endregion
+
+    #region Animation
+
+    IEnumerator ScalePlayerByTime() 
+    {
+        gameObject.transform.localScale = Vector3.zero;
+
+        yield return null;
+
+        gameObject.transform.DOScale(1, scaleDuration).SetEase(ease);
+    }
+
+
 
     #endregion
 }
