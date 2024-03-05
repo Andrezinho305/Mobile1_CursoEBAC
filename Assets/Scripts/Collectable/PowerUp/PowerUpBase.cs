@@ -15,7 +15,8 @@ public class PowerUpBase : CollectableBase
 
     protected override void OnCollect() // override = sobreescreve a função orgiinal que está sendo herdada, adicionando comandos
     { 
-        base.OnCollect(); 
+        base.OnCollect();
+        PlayerController.Instance.Bounce();
         StartPowerUp(); 
     }
 
