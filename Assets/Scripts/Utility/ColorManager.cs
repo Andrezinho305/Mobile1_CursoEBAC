@@ -24,6 +24,6 @@ public class ColorManager : Singleton<ColorManager>
 public class ColorSettup
 {
     public ArtManager.ArtType artType;
-    public List<Color> colors;
-
+    public List<Color> colors; //para cada elemento da lista de materiais, escolhe-se a cor que estes irão se transformar, na ordem em que foram indexados
+                               //com o TYPE, relacionado a lista presente no ArtManager
 }

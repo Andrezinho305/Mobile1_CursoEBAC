@@ -90,7 +90,8 @@ public class LevelManager : MonoBehaviour
 
         ColorManager.Instance.ChangeColourByType(_currSettup.artType);
 
-        StartCoroutine(ScalePiecesByType());
+        StartCoroutine(ScalePiecesByTime());
+
     }
 
     private void CreateLevelPieces(List<LevelPieceBase> list)
@@ -125,12 +126,16 @@ public class LevelManager : MonoBehaviour
             Destroy(_spawnedPieces[i].gameObject);
         }
 
-        _spawnedPieces.Clear(); //limpa o array -> permite que o swapn seja no lugar certo e que a lista nao acabe sendo deletada e trave o jogo
+        _spawnedPieces.Clear(); //limpa o array -> permite que o swpan seja no lugar certo e que a lista nao acabe sendo deletada e trave o jogo
+
+        CoinsAnimatorManager.Instance.CleanSpawnedCoins();
     }
 
 
-    IEnumerator ScalePiecesByType()
+    IEnumerator ScalePiecesByTime() //pode ser usado também em objetos menores como moedas e outras coisas para crescerem e ficar mais bonitinho
     {
+
+
         foreach (var p in _spawnedPieces)
         {
             p.transform.localScale = Vector3.zero; //define o tamanho de todas as peças como 0 no começo
@@ -138,13 +143,15 @@ public class LevelManager : MonoBehaviour
 
         yield return null;
 
-        for (int i = 0; i <= _spawnedPieces.Count; i++)
+        for (int i = 0; i < _spawnedPieces.Count; i++)
         {
             _spawnedPieces[i].transform.DOScale(1, scaleDuration).SetEase(ease); //aumenta o tamanho das peças para 1 durante .2 segundos
 
             yield return new WaitForSeconds(scaleTimeBetweenPieces);
-
         }
+
+        CoinsAnimatorManager.Instance.StartAnimations();
+
     }
 
 

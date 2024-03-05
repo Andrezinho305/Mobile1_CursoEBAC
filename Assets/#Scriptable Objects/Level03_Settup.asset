@@ -15,12 +15,14 @@ MonoBehaviour:
   artType: 2
   levelPieces:
   - {fileID: 2144849418412403247, guid: 56dae237666361c46b4dfa4b4e54839d, type: 3}
+  - {fileID: 9185156689382483109, guid: a09bd7dfb799caa46a224ac72df58d55, type: 3}
   - {fileID: 9185156689382483109, guid: 03e9843cd53745341bac6317cf06f5b0, type: 3}
   - {fileID: 9185156689382483109, guid: a09bd7dfb799caa46a224ac72df58d55, type: 3}
+  - {fileID: 2144849418412403247, guid: 56dae237666361c46b4dfa4b4e54839d, type: 3}
   levelPiecesStart:
   - {fileID: 2144849418412403247, guid: 3097e0ea635a62844a2a150973ae71c4, type: 3}
   levelPiecesEnd:
   - {fileID: 2144849418412403247, guid: c5d115d438e851545b6a6dd81ead6319, type: 3}
-  nOfPieces: 7
+  nOfPieces: 20
   nOfPiecesStart: 1
   nOfPiecesEnd: 1

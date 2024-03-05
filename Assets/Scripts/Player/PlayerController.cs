@@ -40,6 +40,7 @@ public class PlayerController : Singleton<PlayerController>
 
 
 
+
     #endregion
 
     #region Private Vars
@@ -48,6 +49,9 @@ public class PlayerController : Singleton<PlayerController>
     private float _currentSpeed;
     private Vector3 _startPosition;
     private float _baseAnimationSpeed = 10f;
+
+    [SerializeField] private BounceHelper _bounceHelper;
+
 
     #endregion
 
@@ -59,6 +63,8 @@ public class PlayerController : Singleton<PlayerController>
         _startPosition = transform.position;
         ResetSpeed();
     }
+
+
 
     void Update()
     {
@@ -74,6 +80,13 @@ public class PlayerController : Singleton<PlayerController>
         
 
         transform.Translate(transform.forward*_currentSpeed*Time.deltaTime); //adiciona movimento para frente no transform do objeto, multiplicado pela velocidade definida, dentro do relógio padronizado (apara nao ser afetado por framerate)
+    }
+
+
+    public void Bounce()
+    {
+        if(_bounceHelper != null)
+           _bounceHelper.Bounce();
     }
 
     private void OnCollisionEnter(Collision collision)

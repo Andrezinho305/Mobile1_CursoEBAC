@@ -12,7 +12,7 @@ public class ItemCollectableCoin : CollectableBase
 
     private void Start()
     {
-        //CoinsAnimationManager.Instance.RegisterCoin(this);
+        CoinsAnimatorManager.Instance.RegisterCoin(this);
     }
 
     protected override void OnCollect()
@@ -20,12 +20,19 @@ public class ItemCollectableCoin : CollectableBase
         base.OnCollect();
         collider.enabled = false;
         collect = true;
-        //PlayerController.Instance.Bounce();
+        PlayerController.Instance.Bounce();
+    }
+
+    protected virtual void HideItens()
+    {
+        if (graphicItem != null) graphicItem.SetActive(false);
+        Invoke("HideObject", timeToHide);
     }
 
     protected override void Collect()
     {
-        base.Collect();
+        HideItens();
+        OnCollect();
     }
 
     private void Update()
@@ -41,4 +48,7 @@ public class ItemCollectableCoin : CollectableBase
            }
         }
     }
+
+
+
 }
