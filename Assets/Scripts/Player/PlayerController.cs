@@ -17,10 +17,8 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Movement")]
     public float speed = 1f;
-
-    //public string wallTag = "Wall";
-
-
+    public float limit = 5;
+   
     [Header("Text mesh")]
     public TextMeshPro uiTextPowerUp;
 
@@ -40,7 +38,11 @@ public class PlayerController : Singleton<PlayerController>
     public GameObject player;
     public float scaleDuration = .2f;
     public Ease ease = Ease.OutBack;
+
+    [Header("VFX")]
     public ParticleSystem vfxDeath;
+
+
 
 
 
@@ -78,8 +80,17 @@ public class PlayerController : Singleton<PlayerController>
         _pos = target.position;
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
-        
-        //_pos.x = Mathf.Clamp(_pos.x, -5.5f, 5.5f);
+
+        //limita a posição do personagem em X para nao sair do "Chão"
+        if (_pos.x < -limit) _pos.x = -limit;
+        else if (_pos.x > limit) _pos.x = limit;
+
+        /*
+        outra opção é a utilização de um Vector2, que pode ser mais flexivel em níveis assimetricos
+        public Vector2 limitVector = new Vector2(limite 1, limite 2)
+        if (_pos.x < limitVector.x) _pos.x = limitVector.x;
+        else if (_pos.x > limitVector.y) _pos.x = limitVector.y;         
+         */
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         
