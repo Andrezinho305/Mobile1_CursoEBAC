@@ -29,7 +29,8 @@ public class LevelManager : MonoBehaviour
     private void Start() //usar start para garantir que o level é gerado após o singleton dos managers
     {
         //SpawnNextLevel(); //para spawn de um nível completo
-        CreateLevel();
+        //CreateLevel(); //cria um level aleatorio na ordem do Index
+        CreateRandomLevel(); //cria um level aleatório do index toda vez que inicia o jogo
 
     }
 
@@ -91,8 +92,44 @@ public class LevelManager : MonoBehaviour
         ColorManager.Instance.ChangeColourByType(_currSettup.artType);
 
         StartCoroutine(ScalePiecesByTime());
-
     }
+
+    private void CreateRandomLevel()
+    {
+        CleanSpawnedPieces();
+
+        var levelRange = Random.Range(0, levelRandomSettup.Count);
+
+        if (_currSettup != null)
+        {
+
+            _index = levelRange;
+            if (_index >= levelRandomSettup.Count) ResetLevelIndex();
+        }
+
+        _currSettup = levelRandomSettup[levelRange];
+
+        for (int i = 0; i < _currSettup.nOfPiecesStart; i++) //cria um n° de pedaços de cenario da lista especificada usando a função, repetendo para cada int dentro da variavel
+        {
+            CreateLevelPieces(_currSettup.levelPiecesStart);
+        }
+
+        for (int i = 0; i < _currSettup.nOfPieces; i++) //cria um n° de pedaços de cenario da lista especificada usando a função, repetendo para cada int dentro da variavel
+        {
+            CreateLevelPieces(_currSettup.levelPieces);
+        }
+
+        for (int i = 0; i < _currSettup.nOfPiecesEnd; i++) //cria um n° de pedaços de cenario da lista especificada usando a função, repetendo para cada int dentro da variavel
+        {
+            CreateLevelPieces(_currSettup.levelPiecesEnd);
+        }
+
+        ColorManager.Instance.ChangeColourByType(_currSettup.artType);
+
+        StartCoroutine(ScalePiecesByTime());
+    }
+
+
 
     private void CreateLevelPieces(List<LevelPieceBase> list)
     {
@@ -101,7 +138,7 @@ public class LevelManager : MonoBehaviour
 
         if(_spawnedPieces.Count > 0)
         {
-            var lastpiece = _spawnedPieces[_spawnedPieces.Count - 1]; //identifica a ultiam pela pela posição na lista
+            var lastpiece = _spawnedPieces[_spawnedPieces.Count - 1]; //identifica a ultima peça pela posição na lista
 
             spawnedPiece.transform.position = lastpiece.endPiece.position; //pega a posição inicial e insere ela em cima da posição final da ultima peça
         }
