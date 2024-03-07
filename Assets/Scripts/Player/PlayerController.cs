@@ -40,6 +40,7 @@ public class PlayerController : Singleton<PlayerController>
     public GameObject player;
     public float scaleDuration = .2f;
     public Ease ease = Ease.OutBack;
+    public ParticleSystem vfxDeath;
 
 
 
@@ -126,6 +127,7 @@ public class PlayerController : Singleton<PlayerController>
         _canRun = false;
         animatorManager.Play(animationType);
         endScreen.SetActive(true);
+        if(vfxDeath != null) vfxDeath.Play();
     }
 
     public void StartRunning()

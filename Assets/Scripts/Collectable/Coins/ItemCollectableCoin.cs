@@ -43,7 +43,7 @@ public class ItemCollectableCoin : CollectableBase
 
            if (Vector3.Distance(transform.position, PlayerController.Instance.transform.position) < minDistance)
            {
-                //HideItens();
+                HideItens();
                 Destroy(gameObject);
            }
         }
